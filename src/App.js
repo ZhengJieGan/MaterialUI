@@ -1,40 +1,39 @@
 import React from "react";
-import { Grid, Box, Container, Typography } from "@mui/material";
+import { Grid, Box, Typography } from "@mui/material";
+import Block from "./block";
+import NestedBlock from "./nestedBlock";
+import { red, green, yellow } from "@mui/material/colors";
+import { ThemeProvider, createTheme } from "@mui/material/styles";
+
+const theme = createTheme({
+  palette: {
+    primary: {
+      main: red[500],
+    },
+    secondary: {
+      main: green[500],
+      secondary: yellow[500],
+    },
+  },
+  spacing: 5,
+});
 
 function App() {
-	return (
-		<Grid
-			container
-			direction="row"
-			justifyContent="center"
-			sx={{ backgroundColor: "background.secondary" }}
-		>
-			<Box
-				sx={{
-					backgroundColor: "background.primary",
-					margin: 3,
-					width: "40%",
-				}}
-			>
-				<h1>testing 1</h1>
-			</Box>
-
-			<Grid
+  return (
+    //RESPONSIVE GRID VIEW (SMARTPHONE, TABLET, WEB)
+    <ThemeProvider theme={theme}>
+      <Grid
         container
-				alignItems="center"
-				justifyContent="space-around"
-				direction="row"
-				sx={{
-					backgroundColor: "background.tertiary",
-					margin: 3,
-					width: "40%",
-				}}
-			>
-				<h1>testing</h1>
-        <h1>testing</h1>
-			</Grid>
-		</Grid>
-	);
+        sx={{
+          backgroundColor: theme.palette.secondary.secondary,
+        }}
+      >
+        <Block />
+        <Block />
+        <NestedBlock />
+      </Grid>
+    </ThemeProvider>
+  );
 }
 
 export default App;
