@@ -31,6 +31,7 @@ function App() {
         <Block />
         <Block />
         <NestedBlock />
+        <NestedBlock />
       </Grid>
     </ThemeProvider>
   );
